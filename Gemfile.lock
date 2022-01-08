@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    bmi_calculator (0.2.1)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -145,6 +146,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bmi_calculator
   bootsnap (>= 1.4.4)
   byebug
   listen (~> 3.3)
