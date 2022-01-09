@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-    post 'imc', to: "imc#imc"
+    scope "/api", defaults: {format: :json} do
+        resources :vacas, only: [:create, :show]
+    end
 end
