@@ -17,7 +17,7 @@ RSpec.describe "Imc", type: :request do
         #Dados de entrada e saída sendo estruturados
         person_data = {
             "height": height,                            #1.70, -> exemplo
-            "weight": weight,                            #76 -> exemplo
+            "weight": weight                            #76 -> exemplo
         }
         result_wait = {
             "imc": imc,                                 #26.3, -> exemplo
@@ -25,15 +25,19 @@ RSpec.describe "Imc", type: :request do
             "obesity": obesity                          #"0" -> exemplo 
         }
         
+        authorization = {
+            #Única chave permanente. Seu uso só funciona em ambiente de teste.
+            Authorization: "teste_automatizado_123"
+        }
+
         context "Have Authentication" do
             it "returns success status" do
-                post "/imc", params: person_data
+                post "/imc", params: person_data, headers: authorization
                 expect(response).to be_successful
             end
 
             it "the data's imc is present" do
-                #request.headers['Authorization'] = 
-                post "/imc", params: person_data
+                post "/imc", params: person_data, headers: authorization
                 expect(response.body).to eq result_wait.to_json
             end
         end
