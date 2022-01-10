@@ -5,7 +5,7 @@ class ImcController < ApplicationController
     imc = imc_calculate(params[:height], params[:weight]) 
     @table_imc = classification_and_obesity_calculate(imc)
     @table_imc[:imc] = imc
-    
+
     render :show
   end
 
@@ -21,11 +21,11 @@ class ImcController < ApplicationController
   def classification_and_obesity_calculate imc
       case imc 
       when 0.0..18.5
-          {classification: "Magro", obesity: nil}
+          {classification: "Magro", obesity: "0"}
       when 18.5..24.9
-          {classification: "Normal", obesity: nil}
+          {classification: "Normal", obesity: "0"}
       when 25.0..29.9
-          {classification: "Sobrepeso", obesity: nil}
+          {classification: "Sobrepeso", obesity: "0"}
       when 30.0..34.9
           {classification: "Obesidade", obesity: "I"}
       when 35.0..39.9
