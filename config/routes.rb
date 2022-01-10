@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    scope "/api", defaults: {format: :json} do
-        resources :vacas, only: [:create, :show]
+    scope "", defaults: {format: :json} do
+        resources :imc, only: [:create, :show]
     end
 end

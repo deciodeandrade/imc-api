@@ -1,20 +1,15 @@
 class ImcController < ApplicationController
   require "bmi_calculator"
 
-  def imc
-    puts "---------"
-    puts "xyzA: #{params[:height]}"
-    puts "---------"
-    puts "xyzB: #{params}"
-    puts "---------"
+  def create
     imc = imc_calculate(params[:height], params[:weight]) 
     @table_imc = classification_and_obesity_calculate(imc)
-    @table_imc[:imc] = imc 
-    @table_imc
+    @table_imc[:imc] = imc
+    
+    render :show
+  end
 
-    @imc = @table_imc
-
-    render json: @imc
+  def show
   end
 
   private
