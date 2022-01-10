@@ -1,4 +1,4 @@
-module ImcHelper
+module ImcCalculator
     require "bmi_calculator"
 
     def imc_calculate height, weight

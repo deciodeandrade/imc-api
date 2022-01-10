@@ -1,5 +1,5 @@
 require "rails_helper"
-require './app/helpers/imc_helper'
+require './lib/imc_calculator'
 include ImcHelper
 
 RSpec.describe "Imc", type: :request do
