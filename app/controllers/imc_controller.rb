@@ -1,8 +1,9 @@
 class ImcController < ApplicationController
-  require "bmi_calculator"
+  require './app/helpers/imc_helper'
+  include ImcHelper
 
   def create
-    imc = imc_calculate(params[:height], params[:weight]) 
+    imc = imc_calculate(params[:height].to_f, params[:weight].to_f) 
     @table_imc = classification_and_obesity_calculate(imc)
     @table_imc[:imc] = imc
 
@@ -10,28 +11,5 @@ class ImcController < ApplicationController
   end
 
   def show
-  end
-
-  private
-
-  def imc_calculate height, weight
-      BmiCalculator.calc_m(height, weight)
-  end
-
-  def classification_and_obesity_calculate imc
-      case imc 
-      when 0.0..18.5
-          {classification: "Magro", obesity: "0"}
-      when 18.5..24.9
-          {classification: "Normal", obesity: "0"}
-      when 25.0..29.9
-          {classification: "Sobrepeso", obesity: "0"}
-      when 30.0..34.9
-          {classification: "Obesidade", obesity: "I"}
-      when 35.0..39.9
-          {classification: "Obesidade", obesity: "II"}
-      else
-          {classification: "Obesidade grave", obesity: "III"}
-      end
   end
 end
