@@ -1,24 +1,38 @@
-# README
+Começando:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Após clonar o projeto na sua máquina... Através do terminal navegue até o diretório do projeto e...
 
-Things you may want to cover:
+Execute: bundle
 
-* Ruby version
+Execute: rails db:create
 
-* System dependencies
+Execute: rails db:migrate
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+Para utilizar a função de calcular o Imc é necessário estar autenticado. 
 
-* Services (job queues, cache servers, search engines, etc.)
+Autenticação:
+Em ambiente de desenvolvimento e teste...
 
-* Deployment instructions
+Key: Authorization
+Value: "teste_automatizado_123"
+![image](https://user-images.githubusercontent.com/68911852/148751733-279cb10e-e3a4-4a12-abfe-60b8f5ba22c9.png)
 
-* ...
+
+
+Para se autenticar em ambiente de produção será necessário criar um usuário e fazer login
+![image](https://user-images.githubusercontent.com/68911852/148751670-0891c0d0-953f-4ef1-a995-917a6e976275.png)
+
+![image](https://user-images.githubusercontent.com/68911852/148751801-c3ef6059-995b-412a-b93b-219d76cbe455.png)
+
+
+Após configurar as credenciais...
+
+![image](https://user-images.githubusercontent.com/68911852/148752600-ff94c21f-7721-4315-a7c0-f5db1aa08530.png)
+
+Resultado
+![image](https://user-images.githubusercontent.com/68911852/148752649-eabf167d-92fd-49a5-8fcc-3cd0a82b289f.png)
+
+
