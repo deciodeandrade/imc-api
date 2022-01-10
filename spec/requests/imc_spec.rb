@@ -1,6 +1,6 @@
 require "rails_helper"
 require './lib/imc_calculator'
-include ImcHelper
+include ImcCalculator
 
 RSpec.describe "Imc", type: :request do
     describe "POST /imc" do
@@ -32,6 +32,7 @@ RSpec.describe "Imc", type: :request do
             end
 
             it "the data's imc is present" do
+                #request.headers['Authorization'] = 
                 post "/imc", params: person_data
                 expect(response.body).to eq result_wait.to_json
             end

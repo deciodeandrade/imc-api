@@ -1,6 +1,6 @@
 class ImcController < ApplicationController
   require './lib/imc_calculator'
-  include ImcHelper
+  include ImcCalculator
 
   before_action :authorize_request
 
