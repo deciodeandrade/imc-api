@@ -1,9 +1,5 @@
 module ImcCalculator
     require "bmi_calculator"
-
-    def imc_calculate height, weight
-        BmiCalculator.calc_m(height, weight)
-    end
   
     def classification_and_obesity_calculate imc
         case imc 
@@ -20,5 +16,11 @@ module ImcCalculator
         else
             {classification: "Obesidade grave", obesity: "III"}
         end
+    end
+
+    def table_imc_calculate height, weight
+        table_imc = {}
+        table_imc[:imc] = BmiCalculator.calc_m(height, weight) 
+        table_imc.merge!(classification_and_obesity_calculate(table_imc[:imc]))
     end
 end

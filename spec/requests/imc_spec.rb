@@ -1,34 +1,14 @@
 require "rails_helper"
 require './lib/imc_calculator'
+require 'spec_helpers/imc_spec_helper'
+
 include ImcCalculator
 
 RSpec.describe "Imc", type: :request do
     describe "POST /imc" do
-        #Valores de entrada sendo gerados aleatoriamente
-        height = rand(0.0..3.0).round(2)
-        weight = rand(0..400)
-
-        #Valores de saída sendo calculados
-        imc = imc_calculate(height, weight)
-        table = classification_and_obesity_calculate(imc)
-        classification = table[:classification]
-        obesity = table[:obesity]
-
-        #Dados de entrada e saída sendo estruturados
-        person_data = {
-            "height": height,                            #1.70, -> exemplo
-            "weight": weight                            #76 -> exemplo
-        }
-        result_wait = {
-            "imc": imc,                                 #26.3, -> exemplo
-            "classification": classification,            #"Sobrepeso", -> exemplo
-            "obesity": obesity                          #"0" -> exemplo 
-        }
-        
-        authorization = {
-            #Única chave permanente. Seu uso só funciona em ambiente de teste.
-            Authorization: "teste_automatizado_123"
-        }
+        authorization = ImcSpecHelper::authorization
+        person_data = ImcSpecHelper::person_data
+        result_wait = table_imc_calculate(person_data[:height], person_data[:weight])
 
         context "Have Authentication" do
             it "returns success status" do
